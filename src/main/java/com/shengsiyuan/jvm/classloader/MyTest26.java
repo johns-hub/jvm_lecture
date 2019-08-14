@@ -1,6 +1,10 @@
 package com.shengsiyuan.jvm.classloader;
 
 
+import java.sql.Driver;
+import java.util.Iterator;
+import java.util.ServiceLoader;
+
 /**
  * 线程上下文类加载的一般使用模式（获取 - 使用 - 还原）
  *  ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -24,6 +28,16 @@ package com.shengsiyuan.jvm.classloader;
 public class MyTest26 {
 
     public static void main(String[] args) {
+        ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
+        Iterator<Driver> iterator = loader.iterator();
 
+        while (iterator.hasNext()) {
+            Driver driver = iterator.next();
+
+            System.out.println("driver: " + driver + ", loader: " + driver.getClass().getClassLoader());
+        }
+
+        System.out.println("当前线程上下文类加载器: " + Thread.currentThread().getContextClassLoader());
+        System.out.println("ServiceLoader的类加载器: " + ServiceLoader.class.getClassLoader());
     }
 }
