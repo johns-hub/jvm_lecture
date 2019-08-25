@@ -28,6 +28,8 @@ import java.util.ServiceLoader;
 public class MyTest26 {
 
     public static void main(String[] args) {
+        //Thread.currentThread().setContextClassLoader(MyTest26.class.getClassLoader().getParent());
+
         ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
         Iterator<Driver> iterator = loader.iterator();
 
