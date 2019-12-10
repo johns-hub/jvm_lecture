@@ -20,6 +20,16 @@ package com.shengsiyuan.jvm.bytecode;
  * 4. invokevirtual：调用虚方法，运行期动态查找的过程
  * 5. invokedynamic：动态调用方法
  */
+
+/**
+ * 静态解析的4中清晰
+ *
+ * 1. 静态方法
+ * 2. 父类方法
+ * 3. 构造方法
+ * 4. 私有方法（无法被重写）
+ * 以上4类方法称作非虚方法，它们是在类加载阶段就可以将符合引用转换为直接引用的。
+ */
 public class MyTest4 {
     public static void test() {
         System.out.println("test invoked");
